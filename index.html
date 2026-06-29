@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIP_QeQ0Q</title>
+    <style>
+        :root {
+            --bg: #000000;
+            --card-bg: #010a01;
+            --green: #00ff41;
+            --green-bright: #39ff14;
+            --green-dim: #008f11;
+            --green-glow: #00ff4180;
+            --border: #00ff4133;
+            --text: #c0f0c0;
+            --text-bright: #00ff41;
+            --accent: #00cc33;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Courier New', 'Fira Code', 'Consolas', monospace;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 20px;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        /* subtle static grid overlay for texture */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background-image: 
+                linear-gradient(rgba(0,255,65,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,255,65,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 0;
+        }
+
+        .main-container {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        /* ── LOGO & TITLE ── */
+        .header {
+            text-align: center;
+        }
+        .logo-ring {
+            display: inline-block;
+            padding: 6px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,255,65,0.25) 0%, transparent 70%);
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+        }
+        .logo-ring:hover {
+            background: radial-gradient(circle, rgba(0,255,65,0.45) 0%, transparent 75%);
+            box-shadow: 0 0 35px rgba(0,255,65,0.4);
+        }
+        .logo-img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--green-bright);
+            box-shadow: 0 0 25px var(--green-glow), inset 0 0 15px rgba(0,255,65,0.15);
+            display: block;
+        }
+        .main-title {
+            font-size: 2.2rem;
+            font-weight: 900;
+            letter-spacing: 0.12em;
+            color: #000;
+            background: var(--green-bright);
+            display: inline-block;
+            padding: 10px 32px;
+            border-radius: 3px;
+            box-shadow: 0 0 35px var(--green-glow), 0 0 70px rgba(0,255,65,0.35);
+            margin-top: 6px;
+        }
+        @media (max-width: 600px) {
+            .main-title {
+                font-size: 1.6rem;
+                padding: 8px 20px;
+            }
+            .logo-img {
+                width: 70px;
+                height: 70px;
+            }
+        }
+
+        /* ── HEADLINE ── */
+        .headline {
+            font-size: 1.4rem;
+            font-weight: bold;
+            letter-spacing: 0.06em;
+            color: var(--green-bright);
+            text-shadow: 0 0 18px var(--green-glow);
+            text-align: center;
+            text-transform: uppercase;
+            padding: 0 10px;
+            animation: softGlow 3s ease-in-out infinite;
+        }
+        @keyframes softGlow {
+            0%,100% { text-shadow: 0 0 18px var(--green-glow); }
+            50% { text-shadow: 0 0 28px var(--green-bright), 0 0 50px rgba(0,255,65,0.6); }
+        }
+
+        /* ── CARD ── */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 32px 30px;
+            box-shadow: 0 0 30px rgba(0,255,65,0.05), inset 0 0 60px rgba(0,0,0,0.4);
+            backdrop-filter: blur(4px);
+        }
+        .card p {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: #c8f0c8;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        .card .highlight {
+            color: var(--green-bright);
+            font-weight: bold;
+            text-shadow: 0 0 8px var(--green-glow);
+        }
+        .url-box {
+            background: #020f02;
+            border: 1px dashed #00ff4166;
+            border-radius: 5px;
+            padding: 14px 18px;
+            text-align: center;
+            word-break: break-all;
+            margin: 20px 0 10px;
+            font-size: 0.9rem;
+            letter-spacing: 0.04em;
+            color: var(--green-bright);
+            text-shadow: 0 0 5px var(--green-glow);
+            font-weight: bold;
+        }
+        .url-box a {
+            color: var(--green-bright);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .url-box a:hover {
+            text-decoration: underline;
+            color: #5eff7c;
+        }
+
+        /* ── BUTTON ── */
+        .cta-button {
+            display: block;
+            width: fit-content;
+            margin: 0 auto;
+            background: var(--green-bright);
+            color: #000;
+            text-decoration: none;
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            padding: 16px 36px;
+            border-radius: 4px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            box-shadow: 0 0 30px var(--green-glow), 0 0 60px rgba(0,255,65,0.4);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+        .cta-button:hover {
+            box-shadow: 0 0 50px var(--green-bright), 0 0 90px rgba(0,255,65,0.7);
+            transform: translateY(-2px);
+            background: #5eff7c;
+        }
+
+        /* ── VIDEO ── */
+        .video-wrapper {
+            max-width: 400px;
+            width: 100%;
+            margin: 0 auto;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 0 25px rgba(0,255,65,0.1);
+            background: #000;
+            transition: border-color 0.3s;
+        }
+        .video-wrapper:hover {
+            border-color: var(--green-bright);
+        }
+        .video-wrapper video {
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            display: block;
+            object-fit: contain;
+            background: #000;
+        }
+        .video-caption {
+            text-align: center;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            color: #008f11;
+            margin-top: 8px;
+            text-transform: uppercase;
+        }
+
+        /* ── TERMINAL (simplified) ── */
+        .mini-terminal {
+            background: #000a00;
+            border: 1px solid #00ff4125;
+            border-radius: 6px;
+            padding: 16px 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            color: #9aff9a;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .mini-terminal .prompt {
+            color: var(--green-bright);
+            margin-right: 5px;
+        }
+        .mini-terminal span {
+            color: var(--green-bright);
+            font-weight: bold;
+        }
+        .cursor-blink {
+            display: inline-block;
+            width: 7px;
+            height: 14px;
+            background: var(--green-bright);
+            box-shadow: 0 0 8px var(--green-bright);
+            animation: blink 0.9s step-end infinite;
+            vertical-align: middle;
+            margin-left: 4px;
+        }
+        @keyframes blink {
+            0%,100%{ opacity:1; }
+            50%{ opacity:0; }
+        }
+
+        /* ── FOOTER ── */
+        .footer {
+            text-align: center;
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            color: #004d0a;
+            border-top: 1px solid #00ff4115;
+            padding-top: 18px;
+        }
+        .footer a {
+            color: #008f11;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            color: var(--green-bright);
+            text-decoration: underline;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 500px) {
+            .card {
+                padding: 22px 16px;
+            }
+            .url-box {
+                font-size: 0.75rem;
+                padding: 10px;
+            }
+            .cta-button {
+                padding: 14px 24px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+
+        <!-- Header -->
+        <div class="header">
+            <div class="logo-ring">
+                <img src="https://github.com/taggertikktokk-cmd/collection/blob/main/logo.png?raw=true"
+                     alt="VIP_QeQ0Q Logo"
+                     class="logo-img"
+                     onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=width:90px;height:90px;border-radius:50%;background:#000;border:2px solid #00ff41;display:inline-flex;align-items:center;justify-content:center;color:#00ff41;font-size:2rem;text-shadow:0 0 20px #00ff41;box-shadow:0 0 25px #00ff4180;>⬡</div>';">
+            </div>
+            <h1 class="main-title">VIP_QeQ0Q</h1>
+        </div>
+
+        <!-- Headline -->
+        <div class="headline">[COLLECTION] 4393 LEAKED DATABASES AND MORE.</div>
+
+        <!-- Main Card -->
+        <div class="card">
+            <p>
+                <span class="highlight">VIP_QeQ0Q</span> is a Telegram channel, continuously updated archive containing 
+                <span class="highlight">4,393 leaked databases</span> from the 2025–2026 period, alongside 
+                <span class="highlight">2,186 ULP files</span>. 
+                Inside the Telegram channel you gain immediate access to over 
+                <span class="highlight">11,079 downloadable files</span> in various formats — compressed archives 
+                (.7z, .zip, .rar), structured data (.txt, .csv, .xlsx), and torrent files. 
+                also includes <span class="highlight">1,977 direct download links</span> and 
+                <span class="highlight">83 magnet links</span>. New content is posted daily.
+            </p>
+
+            <!-- Visible Channel URL -->
+            <div class="url-box">
+                🔗 Channel Link:<br>
+                <a href="https://t.me/+38rOHzW4z6AxNTU8" target="_blank" rel="noopener noreferrer">
+                    https://t.me/+38rOHzW4z6AxNTU8
+                </a>
+            </div>
+
+            <!-- CTA Button -->
+            <a href="https://t.me/+38rOHzW4z6AxNTU8" target="_blank" rel="noopener noreferrer" class="cta-button">
+                ⚡ JOIN THE CHANNEL NOW
+            </a>
+        </div>
+
+        <!-- Compact Video Section -->
+        <div class="video-wrapper">
+            <video controls
+                   preload="metadata"
+                   style="width:100%; background:#000;">
+                <source src="https://github.com/taggertikktokk-cmd/collection/blob/main/channel%20proof.mp4?raw=true"
+                        type="video/mp4">
+                Your browser does not support the video.
+            </video>
+        </div>
+        <div class="video-caption">📹 channel proof — verified footage</div>
+
+        <!-- Mini terminal with channel link again -->
+        <div class="mini-terminal">
+            <span class="prompt">root@VIP:~$</span> 
+            echo "Access: <span>t.me/+38rOHzW4z6AxNTU8</span>" 
+            <span class="cursor-blink"></span>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <span>◆ VIP_QeQ0Q ◆</span> &nbsp;|&nbsp;
+            <span>EST. 2025</span> &nbsp;|&nbsp;
+            <span>CLASSIFIED COLLECTION</span> &nbsp;|&nbsp;
+            <a href="https://t.me/+38rOHzW4z6AxNTU8" target="_blank" rel="noopener noreferrer">JOIN CHANNEL</a>
+        </div>
+    </div>
+</body>
+</html>
